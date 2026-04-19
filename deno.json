@@ -26,7 +26,10 @@
     "fmt:check": "deno fmt --check",
     "lint": "deno lint",
     "publish:dry": "deno publish --dry-run",
-    "ok": "deno task lint && deno task fmt:check && deno task check && deno task test"
+    "ok": "deno task lint && deno task fmt:check && deno task check && deno task test",
+    "changelog": "git cliff -o CHANGELOG.md",
+    "version": "git cliff --bumped-version",
+    "release": "VERSION=$(git cliff --bumped-version) && git cliff -o CHANGELOG.md && deno task fmt && git add CHANGELOG.md && git commit -m \"chore(*): 🎉 release $VERSION\" && git tag $VERSION"
   },
   "lint": {
     "rules": {
