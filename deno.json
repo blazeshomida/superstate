@@ -1,0 +1,36 @@
+{
+  "name": "@blazes/superstate",
+  "description": "A minimal actor runtime for TypeScript with mailbox semantics, deferred effects, and inspection.",
+  "version": "0.1.0",
+  "exports": "./mod.ts",
+  "license": "MIT",
+  "compilerOptions": {
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "useUnknownInCatchVariables": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "imports": {
+    "@/": "./src/",
+    "@std/assert": "jsr:@std/assert@^1.0.19"
+  },
+  "publish": {
+    "include": ["mod.ts", "src/**/*.ts", "README.md", "LICENSE", "CHANGELOG.md"]
+  },
+  "tasks": {
+    "dev": "deno test --watch",
+    "test": "deno test",
+    "test:doc": "deno test --doc",
+    "check": "deno check mod.ts src/*.ts tests/*.ts",
+    "fmt": "deno fmt",
+    "fmt:check": "deno fmt --check",
+    "lint": "deno lint",
+    "publish:dry": "deno publish --dry-run",
+    "ok": "deno task lint && deno task fmt:check && deno task check && deno task test"
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended", "jsr"]
+    }
+  }
+}
